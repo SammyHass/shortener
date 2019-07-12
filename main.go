@@ -37,6 +37,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if uri == "" {
+		http.NotFound(w, r)
+	}
 	fmt.Println(code)
 	http.Redirect(w, r, uri, 301)
 }
